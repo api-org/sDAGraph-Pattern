@@ -6,7 +6,7 @@ const (
 
 type Transaction interface {
 	EncodeRawTransaction() bool
-	Sign() bool
+	SignTransaction() bool
 }
 
 func NewTransactionAPI() Transaction {
@@ -21,11 +21,11 @@ func (T *TransactionData) EncodeRawTransaction() bool{
 	return T.Result
 }
 
-func (T *TransactionData) EncodeForSign() bool{
+func (T *TransactionData) EncodeTransaction() bool{
 	return T.Result
 }
 
-func (T *TransactionData) Sign() bool{
+func (T *TransactionData) SignTransaction() bool{
 	return true
 }
 
