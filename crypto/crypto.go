@@ -1,8 +1,11 @@
 package crypto
+import(
+)
 
 type CryptoAPI interface {
-        //GeneratePrivateKey()
-        //SubString(number2 string)
+	PrivateKeys()(interface{})
+	PublicKeys()(interface{})
+	Addresses()(interface{})
 }
 
 type Crypto struct {
@@ -11,14 +14,28 @@ type Crypto struct {
 	Address interface{}
 }
 
-func NewCrypto() CryptoAPI{
+func NewCrypto(key string) CryptoAPI{
         return &Crypto{
-                PrivateKey:"",
+		PrivateKey:key,
         }
 }
 
-func (C *Crypto)GeneratePrivateKey() CryptoAPI{
-	return NewCrypto()
+func GenerateKey() CryptoAPI{
+	return &Crypto{
+		PrivateKey:"",
+		PublicKey:"",
+		Address:"",
+	}
 }
 
+func (C *Crypto) PrivateKeys()(interface{}){
+	return C.PrivateKey
+}
 
+func (C *Crypto) PublicKeys()(interface{}){
+	return C.PublicKey
+}
+
+func (C *Crypto) Addresses()(interface{}){
+	return C.Address
+}
